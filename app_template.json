@@ -316,6 +316,10 @@
 			"value": "https://code.engineering.redhat.com/gerrit/errata-rails"
 		},
 		{
+			"name":"GIT_REFSPEC",
+			"value":"refs/changes/65/187165/1"
+		},
+		{
 			"name": "ALL_IN_ONE",
 			"value": "true"
 		},
