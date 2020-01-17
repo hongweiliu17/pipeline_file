@@ -5,7 +5,7 @@ def templateNameofMysql = 'errata-mysql-template'
 def templatePathofET = 'https://github.com/testcara/pipeline_file/raw/master/app_template.json'
 def templatePathofMysql = 'https://github.com/testcara/pipeline_file/raw/master/mysql_template.json'
 def RUN_USER = '1058980001'
-def etTemplateParameters = "-p=CPU_LIMITS=1 -p=MEM_REQUEST=4Gi -p=MEM_LIMITS=4Gi -p=ET_CONFIGMAP=et-qe-testing-settings -p=ET_SECRET=et-qe-testing-settings -p=ET_MYSQL_SECRET=et-qe-testing-mysql -p=RUN_USER=$RUN_USER"
+def etTemplateParameters = "-p=CPU_LIMITS=1 -p=MEM_REQUEST=4Gi -p=MEM_LIMITS=4Gi -p=ET_CONFIGMAP=et-qe-testing-settings -p=ET_SECRET=et-qe-testing-settings -p=ET_MYSQL_SECRET=et-qe-testing-mysql -p=RUN_USER=$RUN_USER -p=GIT_REFSPEC=refs/changes/65/187165/1"
 
 
 def process_template_and_create_objects(String templateName, String templateParameters, String[] objectsName) {
@@ -342,8 +342,8 @@ pipeline {
                             openshift.withProject('errata-qe-test'){
          
                             echo "--- Delete apps --->"
-                            def etAppNames = ["cucumber-et-1", "cucumber-et-2", "cucumber-et-3"]
-                            def mysqlAppNames = ["cucumber-et-1-mysql", "cucumber-et-2-mysql", "cucumber-et-3-mysql"] 
+                            def etAppNames = ["premerge-et-testing-1", "premerge-et-testing-2", "premerge-et-testing-3"]
+                            def mysqlAppNames = ["premerge-et-testing-1-mysql", "premerge-et-testing-2-mysql", "premerge-et-testing-3-mysql"] 
                             etAppNames.each { app ->
                                 openshift.selector("all", [ app : "$app" ]).delete()
                             }
@@ -393,7 +393,7 @@ pipeline {
                 stage('create first group app and do testing') {
                     steps {
                         script{
-                            all_stages(templateNameofMysql, templatePathofET, etTemplateParameters, "cucumber-et-1")
+                            all_stages(templateNameofMysql, templatePathofET, etTemplateParameters, "premerge-et-testing-1")
                         }
                     }
                 }
@@ -401,7 +401,7 @@ pipeline {
                     steps {
                         script{
                             echo "second"
-                            all_stages(templateNameofMysql, templatePathofET, etTemplateParameters, "cucumber-et-2")
+                            all_stages(templateNameofMysql, templatePathofET, etTemplateParameters, "premerge-et-testing-2")
                         }
                     }
                 }
@@ -409,7 +409,7 @@ pipeline {
                     steps {
                         script{
                             echo "third"
-                            all_stages(templateNameofMysql, templatePathofET, etTemplateParameters, "cucumber-et-3",)
+                            all_stages(templateNameofMysql, templatePathofET, etTemplateParameters, "premerge-et-testing-3",)
                         }
                     }
                 }

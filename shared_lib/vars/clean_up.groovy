@@ -1,7 +1,7 @@
 def call(){
     echo "--- Delete apps --->"
-    def etAppNames = ["cucumber-et-1", "cucumber-et-2", "cucumber-et-3"]
-    def mysqlAppNames = ["cucumber-et-1-mysql", "cucumber-et-2-mysql", "cucumber-et-3-mysql"]
+    def etAppNames = ["premerge-et-testing-1", "premerge-et-testing-2", "premerge-et-testing-3"]
+    def mysqlAppNames = ["premerge-et-testing-1-mysql", "premerge-et-testing-2-mysql", "premerge-et-testing-3-mysql"]
     etAppNames.each { app ->
         openshift.selector("all", [ app : "$app" ]).delete()
     }
