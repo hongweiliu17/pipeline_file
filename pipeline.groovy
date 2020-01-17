@@ -1,4 +1,4 @@
-def templateNameofET = 'errata-rails-aio-template'
+def templateNameofET = 'errata-rails-aio-hongliu-template'
 def templateNameofMysql = 'errata-mysql-template'
 //def templatePathofET = 'https://gitlab.cee.redhat.com/wlin/errata-upshift/raw/master/upshift/template/errata_services_template/errata-all-services-in-one-pod.yaml'
 // def templatePathofMysql = 'https://gitlab.cee.redhat.com/wlin/errata-upshift/raw/master/upshift/template/mysql/mysql_template.yaml'

@@ -2,7 +2,7 @@
 	"apiVersion": "v1",
 	"kind": "Template",
 	"metadata": {
-		"name": "errata-rails-aio-template"
+		"name": "errata-rails-aio-hongliu-template"
 	},
 	"objects": [
 		{
